@@ -1,0 +1,20 @@
+{
+    "name": "cristabel/webform",
+    "description": "Cristabel WebForm",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Cristabel\\WebForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Miguel Cabada",
+            "email": "tohuma@gmail.com"
+        }
+    ]
+}
