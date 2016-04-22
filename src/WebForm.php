@@ -1,6 +1,6 @@
 <?php namespace Cristabel\WebForm;
 
-use ReflectionClass;
+use Cristabel\WebForm\Exceptions\WebFormException;
 
 class WebForm {
 
@@ -13,6 +13,10 @@ class WebForm {
         $this->key = $key;
         $this->element = $element;
 
+        if( !isset($element['type']) ) {
+            throw new WebFormException('Type element is not defined');
+        }
+        
         $type = $element['type'];
         $name = '\\Cristabel\\WebForm\\Elements\\' . $type;
         $this->class = new $name();
@@ -20,10 +24,23 @@ class WebForm {
         return $this;
     }
 
-    public function make($row)
+    public function inlineError($input, $errors, $class = 'help-block')
     {
-        $this->element['value'] = $row->{$this->key};
+        if ( !is_null($errors) && $errors->has($input) ) {
+            $message = $errors->first($input);
+            return "<span class=\" $class \">  $message </span>";
+        }
+
+        return;
+    }
+    
+    public function make($row = null)
+    {
         $this->element['name'] = $this->key;
+        if( !is_null($row) ) {
+            $this->element['value'] = $row->{$this->key};
+        }
+
 
         return $this->class->make($this->element);
     }
