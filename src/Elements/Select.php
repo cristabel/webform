@@ -23,7 +23,9 @@ class Select extends AbstractElement
         $this->checked = $this->value;
         if( isset($this->relationship) ){
             $this->datalist = $this->getDatalistFromRelationship();
-            $this->checked = $this->value->id;
+            if( is_object($this->value) ) {
+                $this->checked = $this->value->id;
+            }
         }
 
         return Form::select($this->name, $this->datalist, $this->checked, $this->attribs);

@@ -25,7 +25,9 @@ class PictureFile extends AbstractElement implements Element {
         
         $input = '<div class="thumbnail">';
         $input .= Form::file($this->name);
-        $input .= "<img alt=\"{$this->name}\" src=\"{$this->src}\" {$attribs}>";
+        if( !is_null($this->value) ) {
+            $input .= "<img alt=\"{$this->name}\" src=\"{$this->src}\" {$attribs}>";
+        }
         if( !is_null($this->leyend) ) {
             $input .= "<em>{$this->leyend}</em>";
         }

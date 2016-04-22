@@ -4,8 +4,6 @@ use Cristabel\WebForm\AbstractElement;
 use Cristabel\WebForm\Contracts\Element;
 use Cristabel\WebForm\Traits\AttributesToString;
 
-use Form;
-
 class Picture extends AbstractElement implements Element {
 
     use AttributesToString;
@@ -18,7 +16,7 @@ class Picture extends AbstractElement implements Element {
         
         $attribs = $this->attributesToString();
         $this->src = sprintf($this->src, $this->value);
-        
+
         return "<img name=\"{$this->name}\" alt=\"{$this->name}\" src=\"{$this->src}\" {$attribs}>";
     }
 
