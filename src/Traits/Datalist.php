@@ -1,7 +1,5 @@
 <?php namespace Cristabel\WebForm\Traits;
 
-use Illuminate\Database\Eloquent\Model;
-
 use Cristabel\WebForm\Exceptions\WebFormException;
 
 trait Datalist {
@@ -20,7 +18,7 @@ trait Datalist {
         }
 
         $field = 'name';
-        if( isset($this->relationship['field']) &&  !is_null($this->relationship['field']) ) {
+        if( isset($this->relationship['field']) && !is_null($this->relationship['field']) ) {
             $field = $this->relationship['field'];
         }
         

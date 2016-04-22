@@ -1,9 +1,5 @@
 <?php namespace Cristabel\WebForm\Traits;
 
-use Illuminate\Database\Eloquent\Model;
-
-use Cristabel\WebForm\Exceptions\WebFormException;
-
 trait PicturePreview {
 
     protected $sizes = [];
